@@ -76,7 +76,13 @@ let resultado = document.querySelector('div');
 let resulMachine = document.createElement('div');
 let body = document.querySelector('body');
 body.insertBefore(resulMachine, resultado);
+let rondas= document.createElement('div');
+body.appendChild(rondas);
 
+
+
+let marcadorJugador = 0;
+let marcadorMaquina = 0;
 
 
 
@@ -86,9 +92,23 @@ botones.forEach ((button) => {button.addEventListener('click',function(){
     let a= computerPlay();
     let visRes = playRound(button.textContent, a);
     resulMachine.textContent = a;
-   // console.log(visRes); ya imprime todo por el DOM
+// console.log(visRes); ya imprime todo por el DOM
     resultado.textContent= visRes;
-})})
+    if (visRes === 'You Win! Player Wins') marcadorJugador++;
+    else if (visRes === 'Machine wins! You lose!') marcadorMaquina++;
+
+    //console.log(marcadorJugador);
+    rondas.textContent= marcadorJugador + ' Player - Machine ' + marcadorMaquina;
+    if(marcadorJugador === 5 || marcadorMaquina === 5){rondas.textContent= 'FIN DEL JUEGO'
+                };
+})});
+
+
+
+
+
+    
+
 
 //esta es la funcion a 5 rondas.
 
