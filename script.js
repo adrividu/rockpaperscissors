@@ -6,13 +6,13 @@ function computerPlay(){
 
     if (movimientoMaquina === 0) {
         deNumAPalabra='Rock'
-        console.log(deNumAPalabra)
+       // console.log(deNumAPalabra) ya imprime todo por el propio DOM
     } else if (movimientoMaquina === 1){
         deNumAPalabra='Paper'
-        console.log(deNumAPalabra)
+       // console.log(deNumAPalabra)
     } else {
         deNumAPalabra='Scissors'
-        console.log(deNumAPalabra)
+       // console.log(deNumAPalabra)
     }
     
     return deNumAPalabra;
@@ -69,9 +69,30 @@ function playRound (eleccionJugador, computerSelection) {
 
 }
 
-//console.log(playRound(playerSelection,computerPlay()))
+let botones = document.querySelectorAll('button'); 
+//botones.forEach((button) => console.log('Hola'));
 
-function game(){
+let resultado = document.querySelector('div');
+let resulMachine = document.createElement('div');
+let body = document.querySelector('body');
+body.insertBefore(resulMachine, resultado);
+
+
+
+
+botones.forEach ((button) => {button.addEventListener('click',function(){
+    
+    //alert(button.textContent);
+    let a= computerPlay();
+    let visRes = playRound(button.textContent, a);
+    resulMachine.textContent = a;
+   // console.log(visRes); ya imprime todo por el DOM
+    resultado.textContent= visRes;
+})})
+
+//esta es la funcion a 5 rondas.
+
+/*function game(){
     let marcadorJugador = 0;
     let marcadorMaquina = 0;
     for(let i=0;i<5;i++){
@@ -87,4 +108,4 @@ function game(){
 }
 
 
-game();
+game();*/
